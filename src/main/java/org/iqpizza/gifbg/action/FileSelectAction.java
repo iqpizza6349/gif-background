@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class FileSelectAction extends AnAction {
 
-    private static final String SELECT_GIF = "Select gif file";
-    private static final String CLEAR_GIF = "Clear gif file";
+    private static final String SELECT_GIF = "Select Gif File";
+    private static final String CLEAR_GIF = "Clear Gif File";
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
