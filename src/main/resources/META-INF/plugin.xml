@@ -1,0 +1,43 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>org.iqpizza.gifbackground</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>GifBackground</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="iqpizza6349.dev@gmail.com" url="https://github.com/iqpizza6349">freelancer</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+        Set Gif Image Background For IntelliJ IDEA<br>
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="gifBackground" text="GIF Background" popup="true" icon="/icon/gif.png">
+            <add-to-group group-id="ViewMenu" anchor="after" relative-to-action="ToggleFullScreenGroup"/>
+            <action id="SelectGifFile" class="org.iqpizza.gifbackground.action.SelectBackgroundAction" text="Select Gif File">
+            </action>
+            <separator/>
+            <action id="ClearGifFile" class="org.iqpizza.gifbackground.action.ResetBackgroundAction" text="Clear Gif File">
+            </action>
+            <separator/>
+            <action id="Transparency" class="org.iqpizza.gifbackground.action.TransparencyAction" text="Gif Transparency">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
