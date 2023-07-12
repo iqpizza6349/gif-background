@@ -2,6 +2,7 @@ package org.iqpizza.gifbg.component;
 
 import com.intellij.openapi.components.ProjectComponent;
 import org.apache.commons.lang.StringUtils;
+import org.iqpizza.gifbg.task.BackgroundTaskManager;
 import org.iqpizza.gifbg.util.PropertiesUtil;
 
 /**
@@ -28,5 +29,6 @@ public class GifBackgroundComponent implements ProjectComponent {
         }
 
         // restart the gif background feature
+        BackgroundTaskManager.stop();
     }
 }
