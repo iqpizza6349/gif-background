@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>org.iqpizza.gifbg</id>
+    <id>org.iqpizza.gifbackground</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
@@ -26,20 +26,17 @@
     <extensions defaultExtensionNs="com.intellij">
     </extensions>
 
-    <project-components>
-        <component>
-            <implementation-class>org.iqpizza.gifbg.component.GifBackgroundComponent</implementation-class>
-        </component>
-    </project-components>
-
     <actions>
         <!-- Add your actions here -->
         <group id="gifBackground" text="GIF Background" popup="true" icon="/icon/gif.png">
             <add-to-group group-id="ViewMenu" anchor="after" relative-to-action="ToggleFullScreenGroup"/>
-            <action id="SelectGifFile" class="org.iqpizza.gifbg.action.FileSelectAction" text="Select Gif File">
+            <action id="SelectGifFile" class="org.iqpizza.gifbackground.action.SelectBackgroundAction" text="Select Gif File">
             </action>
             <separator/>
-            <action id="ClearGifFile" class="org.iqpizza.gifbg.action.FileSelectAction" text="Clear Gif File">
+            <action id="ClearGifFile" class="org.iqpizza.gifbackground.action.ResetBackgroundAction" text="Clear Gif File">
+            </action>
+            <separator/>
+            <action id="Transparency" class="org.iqpizza.gifbackground.action.TransparencyAction" text="Gif Transparency">
             </action>
         </group>
     </actions>

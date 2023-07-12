@@ -1,19 +1,13 @@
-package org.iqpizza.gifbg.util;
+package org.iqpizza.gifbackground.util;
 
 import com.intellij.ide.util.PropertiesComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * gif 파일 경로와 gif 파일이 설정되었는 가 여부를 확인하고
- * 새롭게 갱신을 도와주는 유틸 클래스입니다.
- *
- * @since 0.1.0
- * @author iqpizza6349
+ * 배경화면의 설정들을 인 메모리상에서 관리하는 유틸 클래스입니다.
  */
 public class PropertiesUtil {
-    public static final String GIF_PATH = "GIF_PATH";
-    public static final String GIF_ENABLE = "TRUE";
 
     public static void removeKey(@NotNull String key) {
         saveValue(key, null);
@@ -36,5 +30,17 @@ public class PropertiesUtil {
             value = defaultValue;
         }
         return value;
+    }
+
+    public static int getValueByInt(@NotNull String key, String defaultValue) {
+        return Integer.parseInt(getValue(key, defaultValue));
+    }
+
+    public static long getValueByLong(@NotNull String key, String defaultValue) {
+        return Long.parseLong(getValue(key, defaultValue));
+    }
+
+    public static float getValueByFloat(@NotNull String key, String defaultValue) {
+        return Float.parseFloat(getValue(key, defaultValue));
     }
 }
