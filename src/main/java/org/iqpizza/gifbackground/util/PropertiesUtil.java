@@ -1,4 +1,4 @@
-package org.iqpizza.gifbackground.util;
+package org.iqpizza.gifbackground;
 
 import com.intellij.ide.util.PropertiesComponent;
 import org.jetbrains.annotations.NotNull;
