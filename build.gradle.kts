@@ -1,5 +1,5 @@
-version = "1.0.10"
-group = "com.cxy"
+version = "0.1.0"
+group = "org.iqpizza"
 
 plugins {
     id("java")
