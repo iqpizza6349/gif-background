@@ -4,4 +4,4 @@
  * @since 0.1.0
  * @author iqpizza6349
  */
-package org.iqpizza.gifbackground.configuration.constraint;
+package org.iqpizza.gifbackground.configuration.constant;
