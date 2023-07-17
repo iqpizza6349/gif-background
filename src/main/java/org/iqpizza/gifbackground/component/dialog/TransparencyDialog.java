@@ -3,7 +3,7 @@ package org.iqpizza.gifbackground.component.dialog;
 import com.intellij.CommonBundle;
 import com.intellij.openapi.ui.MultiLineLabelUI;
 import com.intellij.openapi.ui.messages.MessageDialog;
-import org.iqpizza.gifbackground.configuration.constraint.PluginConstraint;
+import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +38,7 @@ public class TransparencyDialog extends MessageDialog {
     }
 
     private String getMessage(int transparency) {
-        return String.format(PluginConstraint.TRANSPARENCY_MESSAGE, transparency);
+        return String.format(PluginConstant.TRANSPARENCY_MESSAGE, transparency);
     }
 
     @Override

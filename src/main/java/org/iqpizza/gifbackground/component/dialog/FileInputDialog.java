@@ -8,7 +8,7 @@ import com.intellij.openapi.ui.MultiLineLabelUI;
 import com.intellij.openapi.ui.messages.MessageDialog;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.components.fields.ExtendableTextField;
-import org.iqpizza.gifbackground.configuration.constraint.PluginConstraint;
+import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +35,7 @@ public class FileInputDialog extends MessageDialog {
     public FileInputDialog(String defaultValue, Consumer<String> selectable) {
         this.defaultValue = defaultValue;
         this.selectable = selectable;
-        myMessage = PluginConstraint.ENTER_GIF_MESSAGE;
+        myMessage = PluginConstant.ENTER_GIF_MESSAGE;
         init();
         show();
     }
