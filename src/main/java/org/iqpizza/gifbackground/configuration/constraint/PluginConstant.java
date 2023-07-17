@@ -10,6 +10,10 @@ package org.iqpizza.gifbackground.configuration.constraint;
  */
 public class PluginConstraint {
 
+    public static final int DEFAULT_MAX_VIDEO_WIDTH = 960;
+    public static final int DEFAULT_MAX_VIDEO_HEIGHT = 540;
+
+
     /** 배경화면 경로 */
     public static final String GIF_PATH = "GIF_PATH";
 
@@ -20,11 +24,29 @@ public class PluginConstraint {
     /** 불투명도 */
     public static final String TRANSPARENCY = "TRANSPARENCY";
 
+    public static final Float DEFAULT_TRANSPARENCY = 1F;
+
 
     /** 불투명도 dialog 메시지 */
     public static final String TRANSPARENCY_MESSAGE = "Current transparency: %s";
 
     /** 배경화면 설정 dialog 메시지 */
     public static final String ENTER_GIF_MESSAGE = "Choose a gif file locally or enter a path";
+
+
+
+    public static final int DEFAULT_PROGRESS_BAR_MAXIMUM = 1000;
+    public static final int DEFAULT_PROGRESS_BAR_HEIGHT = 2;
+    public static final int DEFAULT_PROGRESS_BAR_INDICATOR_SIZE = 10;
+    public static final int DEFAULT_PROGRESS_BAR_INDICATOR_COLOR = 0xFE4CAF50;
+    public static final int DEFAULT_PROGRESS_BAR_PRIMARY_COLOR = 0x804CAF50;
+    public static final int DEFAULT_PROGRESS_BAR_SECONDARY_COLOR = 0x50A5D6A7;
+
+
+    public static final String GRABBER_ERROR_MESSAGE = "Grab Error!";
+    /** */
+    public static final String GRABBER_INITIALIZATION_FAILED_MESSAGE = "Grabber initialization failed!";
+
+    public static final String PAINTER_INITIALIZATION_FAILED_MESSAGE = "Background Painter initialization failed!";
 
 }
