@@ -4,7 +4,8 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.iqpizza.gifbackground.component.dialog.TransparencyDialog;
-import org.iqpizza.gifbackground.configuration.constraint.PluginConstraint;
+import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
+import org.iqpizza.gifbackground.media.GifPlayer;
 import org.iqpizza.gifbackground.util.PropertiesUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +20,7 @@ import static com.intellij.openapi.actionSystem.ActionUpdateThread.EDT;
  */
 public class TransparencyAction extends AnAction {
 
-    private float currentTransparency = PropertiesUtil.getValueByFloat(PluginConstraint.TRANSPARENCY, "0F");
+    private float currentTransparency = PropertiesUtil.getValueByFloat(PluginConstant.TRANSPARENCY, ".1F");
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
@@ -35,7 +36,7 @@ public class TransparencyAction extends AnAction {
     }
 
     private void updateTransparency() {
-        // TODO: update to current transparency
+        GifPlayer.INSTANCE.changeCanvasAlpha(currentTransparency);
     }
 
     @Override

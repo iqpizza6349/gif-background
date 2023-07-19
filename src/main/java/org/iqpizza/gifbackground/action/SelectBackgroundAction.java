@@ -3,8 +3,9 @@ package org.iqpizza.gifbackground.action;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import org.iqpizza.gifbackground.configuration.constraint.PluginConstraint;
+import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
 import org.iqpizza.gifbackground.component.dialog.FileInputDialog;
+import org.iqpizza.gifbackground.media.GifPlayer;
 import org.iqpizza.gifbackground.util.PropertiesUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,22 +27,12 @@ public class SelectBackgroundAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent e) {
         JFrame frame = (JFrame) KeyboardFocusManager.getCurrentKeyboardFocusManager()
                 .getActiveWindow();
-        String currentPath = PropertiesUtil.getValue(PluginConstraint.GIF_PATH);
+        String currentPath = PropertiesUtil.getValue(PluginConstant.GIF_PATH);
         new FileInputDialog(currentPath, text -> {
             if (!text.isEmpty()) {
-                PropertiesUtil.saveValue(PluginConstraint.GIF_PATH, text);
-                //TODO: initialize media player and start it.
+                PropertiesUtil.saveValue(PluginConstant.GIF_PATH, text);
+                GifPlayer.INSTANCE.injectPainter(frame);
             }
         });
-    }
-
-    @Override
-    public void update(@NotNull AnActionEvent e) {
-        // TODO: MediaPlayer.isStopped
-    }
-
-    @Override
-    public @NotNull ActionUpdateThread getActionUpdateThread() {
-        return EDT;
     }
 }

@@ -7,7 +7,6 @@
     <list default="true" id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":recycle: :: refactor and renewal the main branch">
       <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/ResetBackgroundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/ResetBackgroundAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/SelectBackgroundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/SelectBackgroundAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/TransparencyAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/TransparencyAction.java" afterDir="false" />
@@ -311,7 +310,7 @@
       <workItem from="1689752270708" duration="210000" />
       <workItem from="1689752487553" duration="309000" />
       <workItem from="1689752830710" duration="57000" />
-      <workItem from="1689768639540" duration="1051000" />
+      <workItem from="1689768639540" duration="1382000" />
     </task>
     <servers />
   </component>
