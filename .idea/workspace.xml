@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":recycle: :: refactor and renewal the main branch">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/iqpizza/gifbg/ImageFrameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/ResetBackgroundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/ResetBackgroundAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/SelectBackgroundAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/SelectBackgroundAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/TransparencyAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/action/TransparencyAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +88,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2023.1.1/6ba1ff0f5cf440c16dd0c3b2f1fe5baacd53d918/ideaIC-2023.1.1-sources.jar!/com/intellij/openapi/wm/impl/IdeBackgroundUtil.java" root0="SKIP_INSPECTION" />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -101,28 +103,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging renewal",
-    "last_opened_file_path": "D:/developing/GifBackground/build/libs/instrumented-GifBackground-1.0-SNAPSHOT.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/develop/GifBackground/build/libs/instrumented-GifBackground-0.1.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\developing\GifBackground\src\main\resources\icon" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GifBackground [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Run Plugin">
     <configuration name="GifBackground [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -229,7 +231,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="15f9dfad-10de-4d13-93af-f63c34ebab2a" name="Changes" comment="" />
+      <changelist id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":recycle: :: refactor and renewal the main branch" />
       <created>1688444511851</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -295,6 +297,21 @@
       <workItem from="1689072848037" duration="613000" />
       <workItem from="1689073480409" duration="68000" />
       <workItem from="1689116898005" duration="372000" />
+      <workItem from="1689746629124" duration="2229000" />
+      <workItem from="1689748883380" duration="629000" />
+      <workItem from="1689749523557" duration="283000" />
+      <workItem from="1689749815360" duration="355000" />
+      <workItem from="1689750180036" duration="386000" />
+      <workItem from="1689750575121" duration="199000" />
+      <workItem from="1689750781949" duration="136000" />
+      <workItem from="1689750925605" duration="320000" />
+      <workItem from="1689751253969" duration="294000" />
+      <workItem from="1689751557275" duration="570000" />
+      <workItem from="1689752138766" duration="126000" />
+      <workItem from="1689752270708" duration="210000" />
+      <workItem from="1689752487553" duration="309000" />
+      <workItem from="1689752830710" duration="57000" />
+      <workItem from="1689768639540" duration="1051000" />
     </task>
     <servers />
   </component>
