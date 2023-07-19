@@ -54,10 +54,6 @@ public class GifPlayer {
         }
     }
 
-    public float getCanvasAlpha() {
-        return canvasAlpha;
-    }
-
     public boolean isStopped() {
         return state == STATE_STOPPED;
     }
@@ -92,22 +88,17 @@ public class GifPlayer {
 
     @SuppressWarnings("BusyWait")
     private final Runnable imageProcessTask = () -> {
-        if (isStopped()) {
-            return;
-        }
         try {
             while (initialized) {
                 final long maxInterval = grabInterval * 2;
                 if (isPlaying()) {
                     FrameInfo frameInfo = images.get(frame++);
+                    _notify();
                     long occurredTime = measureTimeMillis(() -> draw(frameInfo.image()));
                     long interval = grabInterval - occurredTime;
                     if (interval > 0) {
                         _wait2(maxInterval);
                     }
-                }
-                else if (isStopped()) {
-                    _wait();
                 }
 
                 if (frame >= images.size()) {
@@ -122,18 +113,15 @@ public class GifPlayer {
         } finally {
             stop();
         }
+        log.info("finally stops");
         images.clear();
     };
 
     @SuppressWarnings("BusyWait")
     private final Runnable repaintTask = () -> {
-        if (isStopped()) {
-            return;
-        }
-
         try {
             while (initialized) {
-                if (isPlaying() && initialized) {
+                if (isPlaying()) {
                     long occurredTime = measureTimeMillis(() -> {
                         try {
                             EventQueue.invokeAndWait(this::updateFrameImmediately);
@@ -147,8 +135,6 @@ public class GifPlayer {
                     }
 
                     Thread.sleep(8);
-                } else if (isStopped()) {
-                    _wait();
                 }
             }
         } catch (Throwable t) {
@@ -185,6 +171,7 @@ public class GifPlayer {
         images.clear();
         images.addAll(frames);
         changeState(STATE_PLAYING);
+        _notify2();
     };
 
     public void injectPainter(JFrame frame) {
@@ -242,23 +229,23 @@ public class GifPlayer {
         final int imageWidth = image.getWidth(null);
         final int imageHeight = image.getHeight(null);
         imageSize.setBounds(0, 0, imageWidth, imageHeight);
-//        if (rootPane.getWidth() != lastRootPaneWidth
-//                || rootPane.getHeight() != lastRootPaneHeight) {
-//            if (rootPane.getWidth() < rootPane.getHeight()) {
-//                final float imageAspectRatio = (float) imageHeight / (float) imageWidth;
-//                paneWidth = rootPane.getWidth();
-//                paneHeight = (int) (((float) (paneWidth)) * imageAspectRatio);
-//            }
-//            else {
-//                final float imageAspectRatio = (float) imageWidth / (float) imageHeight;
-//                paneHeight = rootPane.getHeight();
-//                paneWidth = (int) ((float) (paneHeight) * imageAspectRatio);
-//            }
-//            lastRootPaneWidth = rootPane.getWidth();
-//            lastRootPaneHeight = rootPane.getHeight();
-//        }
-
-        paneSize.setBounds(0, 0, rootPane.getWidth(), rootPane.getHeight());
+        if (rootPane.getWidth() != lastRootPaneWidth
+                || rootPane.getHeight() != lastRootPaneHeight) {
+            if (rootPane.getWidth() < rootPane.getHeight()) {
+                final float imageAspectRatio = (float) imageHeight / (float) imageWidth;
+                paneWidth = rootPane.getWidth();
+                paneHeight = (int) (((float) (paneWidth)) * imageAspectRatio);
+            }
+            else {
+                final float imageAspectRatio = (float) imageWidth / (float) imageHeight;
+                paneHeight = rootPane.getHeight();
+                paneWidth = (int) ((float) (paneHeight) * imageAspectRatio);
+            }
+            lastRootPaneWidth = rootPane.getWidth();
+            lastRootPaneHeight = rootPane.getHeight();
+        }
+         paneSize.setBounds(rootPane.getWidth() / 2 - paneWidth / 2, rootPane.getHeight() / 2 - paneHeight, paneWidth, paneHeight);
+//        paneSize.setBounds(0, 0, rootPane.getWidth(), rootPane.getHeight());
     }
 
     private void draw(BufferedImage image) {
@@ -267,7 +254,6 @@ public class GifPlayer {
             initializeFrameImage();
         }
         if (frameImageGraphics != null) {
-            //TODO: probably it's frameImage
             draw2Graphics(frameImage, frameImageGraphics, paneSize, imageSize);
         }
         image.flush();
@@ -309,10 +295,10 @@ public class GifPlayer {
     private VolatileImage createVolatileImage(GraphicsConfiguration config) {
         try {
             return config.createCompatibleVolatileImage(rootPane.getWidth(),
-                    rootPane.getHeight(), new ImageCapabilities(true), Transparency.BITMASK);
+                    rootPane.getHeight(), new ImageCapabilities(true), Transparency.TRANSLUCENT);
         } catch (Exception e) {
             return config.createCompatibleVolatileImage(rootPane.getWidth(),
-                    rootPane.getHeight(), Transparency.BITMASK);
+                    rootPane.getHeight(), Transparency.TRANSLUCENT);
         }
     }
 
