@@ -81,7 +81,7 @@ public class GifPlayer {
         public void executePaint(Component component, Graphics2D g) {
             final Composite oldComposite = g.getComposite();
             g.setComposite(alphaComposite);
-            draw2Graphics(frameImage, g, paneSize, paneSize);
+            draw2Graphics(frameImage, g, paneSize);
             g.setComposite(oldComposite);
         }
     };
@@ -244,8 +244,7 @@ public class GifPlayer {
             lastRootPaneWidth = rootPane.getWidth();
             lastRootPaneHeight = rootPane.getHeight();
         }
-         paneSize.setBounds(rootPane.getWidth() / 2 - paneWidth / 2, rootPane.getHeight() / 2 - paneHeight, paneWidth, paneHeight);
-//        paneSize.setBounds(0, 0, rootPane.getWidth(), rootPane.getHeight());
+        paneSize.setBounds(rootPane.getWidth() / 2 - paneWidth / 2, rootPane.getHeight() / 2 - paneHeight / 2, paneWidth, paneHeight);
     }
 
     private void draw(BufferedImage image) {
@@ -254,19 +253,28 @@ public class GifPlayer {
             initializeFrameImage();
         }
         if (frameImageGraphics != null) {
-            draw2Graphics(frameImage, frameImageGraphics, paneSize, imageSize);
+            draw2Graphics(image, frameImageGraphics, imageSize);
         }
+
+        frameImage.flush();
         image.flush();
     }
 
-    private void draw2Graphics(Image image, Graphics g, Rectangle dstBounds,
-                                Rectangle srcBounds) {
+    boolean hasDraw = false;
+    private void draw2Graphics(Image image, Graphics g, Rectangle srcBounds) {
+        if (image == null) {
+            return;
+        }
+        if (!hasDraw) {
+            hasDraw = true;
+        }
+
         final int sx = round(srcBounds.x);
         final int sy = round(srcBounds.y);
         final int sw = (srcBounds.width >= 0) ? round(srcBounds.width) : round(image.getWidth(null)) - sx;
         final int sh = (srcBounds.height >= 0) ? round(srcBounds.height) : round(image.getHeight(null)) - sy;
-        g.drawImage(image, dstBounds.x, dstBounds.y, dstBounds.x + dstBounds.width,
-                dstBounds.y + dstBounds.height, sx, sy, sx + sw, sy + sh, null
+        g.drawImage(image, paneSize.x, paneSize.y, paneSize.x + paneSize.width,
+                paneSize.y + paneSize.height, sx, sy, sx + sw, sy + sh, null
         );
     }
 
@@ -318,18 +326,6 @@ public class GifPlayer {
 
     private final Object LOCK = new Object();
     private final Object LOCK2 = new Object();
-
-    private void _wait() {
-        runCatchingSilently(() -> {
-            synchronized (LOCK) {
-                try {
-                    LOCK.wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-    }
 
     private void _wait2(long timeout) {
         runCatchingSilently(() -> {
