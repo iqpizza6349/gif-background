@@ -260,13 +260,9 @@ public class GifPlayer {
         image.flush();
     }
 
-    boolean hasDraw = false;
     private void draw2Graphics(Image image, Graphics g, Rectangle srcBounds) {
         if (image == null) {
             return;
-        }
-        if (!hasDraw) {
-            hasDraw = true;
         }
 
         final int sx = round(srcBounds.x);
