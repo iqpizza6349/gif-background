@@ -272,6 +272,15 @@ public class GifPlayer {
         g.drawImage(image, paneSize.x, paneSize.y, paneSize.x + paneSize.width,
                 paneSize.y + paneSize.height, sx, sy, sx + sw, sy + sh, null
         );
+        final GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment()
+                .getDefaultScreenDevice().getDefaultConfiguration();
+        VolatileImage volatileImage = createVolatileImage(config);
+        //apply
+        volatileImage.validate(null);
+        volatileImage.setAccelerationPriority(1F);
+        g.drawImage(volatileImage, 0, 0, paneSize.x, paneSize.y + paneSize.height, null);
+        g.drawImage(volatileImage, paneSize.x + paneSize.width, 0, paneSize.x, paneSize.y + paneSize.height, null);
+
     }
 
     private int round(int value) {
