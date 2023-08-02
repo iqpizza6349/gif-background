@@ -1,6 +1,5 @@
 package org.iqpizza.gifbackground.media;
 
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.ui.AbstractPainter;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.Painter;
@@ -16,7 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +24,6 @@ public class GifPlayer {
     public static final int STATE_STOPPED = 0;
     public static final int STATE_PLAYING = 1;
     private volatile int state;
-    private static final Logger log = Logger.getInstance(GifPlayer.class);
     public static final GifPlayer INSTANCE = new GifPlayer();
     private final List<FrameInfo> images = new LinkedList<>();
     private final ScheduledThreadPoolExecutor threadPool = new ScheduledThreadPoolExecutor(4);
@@ -91,33 +88,32 @@ public class GifPlayer {
         try {
             while (initialized) {
                 final long maxInterval = grabInterval * 2;
+                FrameInfo info;
                 if (isPlaying()) {
-                    FrameInfo frameInfo = images.get(frame++);
+                    info = images.get(frame++);
                     _notify();
-                    long occurredTime = measureTimeMillis(() -> draw(frameInfo.image()));
+                    long occurredTime = measureTimeMillis(() -> draw(info.image()));
                     long interval = grabInterval - occurredTime;
                     if (interval > 0) {
                         _wait2(maxInterval);
                     }
+                } else {
+                    info = null;
                 }
 
                 if (frame >= images.size()) {
                     frame = 0;
                 }
 
-                Thread.sleep(8);
+                Thread.sleep((info == null) ? 8 : info.delay());
             }
         } catch (Throwable t) {
             t.printStackTrace();
             showErrorDialog(t);
-        } finally {
-            stop();
         }
-        log.info("finally stops");
         images.clear();
     };
 
-    @SuppressWarnings("BusyWait")
     private final Runnable repaintTask = () -> {
         try {
             while (initialized) {
@@ -133,15 +129,11 @@ public class GifPlayer {
                     if (interval > 0) {
                         _wait2(interval);
                     }
-
-                    Thread.sleep(8);
                 }
             }
         } catch (Throwable t) {
             t.printStackTrace();
             showErrorDialog(t);
-        } finally {
-            stop();
         }
     };
 
@@ -149,7 +141,6 @@ public class GifPlayer {
     private void updateFrameImmediately() {
         repaintManager.addDirtyRegion(rootPane, 0, 0, rootPane.getWidth(), rootPane.getHeight());
         repaintBarrier = false;
-        log.info("repainting the region: " + repaintManager.getDirtyRegion(rootPane));
         repaintRunnable.run();
         repaintBarrier = true;
     }
@@ -198,8 +189,7 @@ public class GifPlayer {
         Object helper = getPaintersHelper(glassPane);
         ReflectionUtil.invokeVoid(helper.getClass(), helper, "addPainter",
                 List.of(new Pair<>(Painter.class, painter), new Pair<>(Component.class, glassPane)));
-        Set<?> painters = ReflectionUtil.get(Set.class, helper.getClass(), helper, "painters");
-        log.info("current painters: " +  Arrays.toString(painters.toArray()));
+        ReflectionUtil.get(Set.class, helper.getClass(), helper, "painters");
     }
 
     private Object getPaintersHelper(IdeGlassPaneImpl glassPane) {
