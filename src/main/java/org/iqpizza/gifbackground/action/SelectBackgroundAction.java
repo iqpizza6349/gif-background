@@ -1,6 +1,5 @@
 package org.iqpizza.gifbackground.action;
 
-import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
@@ -11,8 +10,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-
-import static com.intellij.openapi.actionSystem.ActionUpdateThread.EDT;
 
 /**
  * 배경화면으로 설정할 파일을 대화창을 통해 받아와서 해당 파일을
@@ -29,7 +26,7 @@ public class SelectBackgroundAction extends AnAction {
                 .getActiveWindow();
         String currentPath = PropertiesUtil.getValue(PluginConstant.GIF_PATH);
         new FileInputDialog(currentPath, text -> {
-            if (!text.isEmpty()) {
+            if (!text.isEmpty() && (text.endsWith(".gif") || text.endsWith(".GIF"))) {
                 PropertiesUtil.saveValue(PluginConstant.GIF_PATH, text);
                 GifPlayer.INSTANCE.injectPainter(frame);
             }
