@@ -34,6 +34,7 @@ public class GifPlayer {
     private Runnable repaintRunnable;
     private JRootPane rootPane;
     private VolatileImage frameImage;
+    private static VolatileImage BLANK_TRANSPARENT_IMAGE;
     private Graphics2D frameImageGraphics;
     private long grabInterval = 0L;
     private int frame = 0;
@@ -262,15 +263,17 @@ public class GifPlayer {
         g.drawImage(image, paneSize.x, paneSize.y, paneSize.x + paneSize.width,
                 paneSize.y + paneSize.height, sx, sy, sx + sw, sy + sh, null
         );
-        final GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice().getDefaultConfiguration();
-        VolatileImage volatileImage = createVolatileImage(config);
-        //apply
-        volatileImage.validate(null);
-        volatileImage.setAccelerationPriority(1F);
-        g.drawImage(volatileImage, 0, 0, paneSize.x, paneSize.y + paneSize.height, null);
-        g.drawImage(volatileImage, paneSize.x + paneSize.width, 0, paneSize.x, paneSize.y + paneSize.height, null);
 
+        if (BLANK_TRANSPARENT_IMAGE == null) {
+            final GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment()
+                    .getDefaultScreenDevice().getDefaultConfiguration();
+            BLANK_TRANSPARENT_IMAGE = createVolatileImage(config);
+            BLANK_TRANSPARENT_IMAGE.validate(null);
+            BLANK_TRANSPARENT_IMAGE.setAccelerationPriority(1F);
+        }
+
+        g.drawImage(BLANK_TRANSPARENT_IMAGE, 0, 0, paneSize.x, paneSize.y + paneSize.height, null);
+        g.drawImage(BLANK_TRANSPARENT_IMAGE, paneSize.x + paneSize.width, 0, paneSize.x, paneSize.y + paneSize.height, null);
     }
 
     private int round(int value) {
