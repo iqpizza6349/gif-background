@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":recycle: :: refactor and renewal the main branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +304,9 @@
       <workItem from="1690902559138" duration="2226000" />
       <workItem from="1690909542062" duration="643000" />
       <workItem from="1690950371781" duration="1575000" />
-      <workItem from="1690952144544" duration="3041000" />
+      <workItem from="1690952144544" duration="3607000" />
+      <workItem from="1690956237698" duration="22000" />
+      <workItem from="1690963601625" duration="636000" />
     </task>
     <servers />
   </component>
