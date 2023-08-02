@@ -3,6 +3,7 @@ package org.iqpizza.gifbackground.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.iqpizza.gifbackground.configuration.constant.PluginConstant;
+import org.iqpizza.gifbackground.media.GifPlayer;
 import org.iqpizza.gifbackground.util.PropertiesUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,5 +18,6 @@ public class ResetBackgroundAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         PropertiesUtil.saveValue(PluginConstant.GIF_PATH, null);
+        GifPlayer.INSTANCE.stop();
     }
 }
