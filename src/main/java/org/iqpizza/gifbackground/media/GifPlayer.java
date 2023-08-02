@@ -63,6 +63,24 @@ public class GifPlayer {
     public void stop() {
         initialized = false;
         changeState(STATE_STOPPED);
+        try {
+            Thread.sleep(grabInterval * 4);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (frameImage != null) {
+            frameImage.flush();
+        }
+        frameImage = null;
+        if (frameImageGraphics != null) {
+            frameImageGraphics.dispose();
+        }
+        frameImageGraphics = null;
+        if (rootPane != null) {
+            rootPane.repaint();
+        }
+        repaintBarrier = false;
     }
 
     private void changeState(int newState) {
@@ -167,6 +185,7 @@ public class GifPlayer {
     };
 
     public void injectPainter(JFrame frame) {
+        stop();
         JRootPane pane = frame.getRootPane();
         if (!initialized) {
             addPainter(pane);
@@ -180,6 +199,7 @@ public class GifPlayer {
         lastRootPaneWidth = 0;
         lastRootPaneHeight = 0;
         Thread gifDecodeThread = new Thread(gifDecodeTask);
+        gifDecodeThread.setDaemon(true);
         gifDecodeThread.start();
         threadPool.execute(imageProcessTask);
         threadPool.execute(repaintTask);
