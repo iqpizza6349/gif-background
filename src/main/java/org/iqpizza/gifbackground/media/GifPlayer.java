@@ -102,29 +102,23 @@ public class GifPlayer {
         }
     };
 
-    @SuppressWarnings("BusyWait")
     private final Runnable imageProcessTask = () -> {
         try {
             while (initialized) {
                 final long maxInterval = grabInterval * 2;
-                FrameInfo info;
                 if (isPlaying()) {
-                    info = images.get(frame++);
+                    FrameInfo info = images.get(frame++);
                     _notify();
                     long occurredTime = measureTimeMillis(() -> draw(info.image()));
                     long interval = grabInterval - occurredTime;
                     if (interval > 0) {
-                        _wait2(maxInterval);
+                        _wait(Math.min(interval, maxInterval));
                     }
-                } else {
-                    info = null;
                 }
 
                 if (frame >= images.size()) {
                     frame = 0;
                 }
-
-                Thread.sleep((info == null) ? 8 : info.delay());
             }
         } catch (Throwable t) {
             t.printStackTrace();
@@ -146,7 +140,7 @@ public class GifPlayer {
                     });
                     long interval = grabInterval - occurredTime;
                     if (interval > 0) {
-                        _wait2(interval);
+                        _wait(interval);
                     }
                 }
             }
@@ -181,7 +175,7 @@ public class GifPlayer {
         images.clear();
         images.addAll(frames);
         changeState(STATE_PLAYING);
-        _notify2();
+        _notify();
     };
 
     public void injectPainter(JFrame frame) {
@@ -195,7 +189,6 @@ public class GifPlayer {
 
         grabInterval = (1000 / 8);
         _notify();
-        _notify2();
         lastRootPaneWidth = 0;
         lastRootPaneHeight = 0;
         Thread gifDecodeThread = new Thread(gifDecodeTask);
@@ -343,14 +336,13 @@ public class GifPlayer {
     }
 
     private final Object LOCK = new Object();
-    private final Object LOCK2 = new Object();
 
-    private void _wait2(long timeout) {
+    private void _wait(long timeout) {
         runCatchingSilently(() -> {
             if (timeout > 0L) {
-                synchronized (LOCK2) {
+                synchronized (LOCK) {
                     try {
-                        LOCK2.wait(timeout);
+                        LOCK.wait(timeout);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -363,14 +355,6 @@ public class GifPlayer {
         runCatchingSilently(() -> {
             synchronized (LOCK) {
                 LOCK.notifyAll();
-            }
-        });
-    }
-
-    private void _notify2() {
-        runCatchingSilently(() -> {
-            synchronized (LOCK2) {
-                LOCK2.notifyAll();
             }
         });
     }
