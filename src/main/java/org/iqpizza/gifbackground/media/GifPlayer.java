@@ -285,8 +285,10 @@ public class GifPlayer {
             BLANK_TRANSPARENT_IMAGE.setAccelerationPriority(1F);
         }
 
-        g.drawImage(BLANK_TRANSPARENT_IMAGE, 0, 0, paneSize.x, paneSize.y + paneSize.height, null);
-        g.drawImage(BLANK_TRANSPARENT_IMAGE, paneSize.x + paneSize.width, 0, paneSize.x, paneSize.y + paneSize.height, null);
+        if (paneSize.x != 0 || paneSize.y != 0) {
+            g.drawImage(BLANK_TRANSPARENT_IMAGE, 0, 0, paneSize.x, paneSize.y + paneSize.height, null);
+            g.drawImage(BLANK_TRANSPARENT_IMAGE, paneSize.x + paneSize.width, 0, paneSize.x, paneSize.y + paneSize.height, null);
+        }
     }
 
     private int round(int value) {

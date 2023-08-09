@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":safety_vest: :: add gif extension check logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/util/GifDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/util/GifDecoder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +110,7 @@
       <recent name="D:\develop\GifBackground" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Run Plugin">
+  <component name="RunManager" selected="Gradle.GifBackground [buildPlugin]">
     <configuration name="GifBackground [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -319,7 +317,7 @@
       <workItem from="1690993820872" duration="344000" />
       <workItem from="1691041329779" duration="2798000" />
       <workItem from="1691308316436" duration="220000" />
-      <workItem from="1691538879547" duration="3241000" />
+      <workItem from="1691538879547" duration="3790000" />
     </task>
     <task id="LOCAL-00001" summary=":safety_vest: :: add gif extension check logic">
       <created>1690966206918</created>
