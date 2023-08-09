@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa613d9c-22fb-424a-b3c5-58cf99c141e5" name="Changes" comment=":safety_vest: :: add gif extension check logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/media/GifPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/util/GifDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iqpizza/gifbackground/util/GifDecoder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +108,11 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\developing\GifBackground\src\main\resources\icon" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\develop\GifBackground" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.GifBackground [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Run Plugin">
     <configuration name="GifBackground [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -310,7 +314,12 @@
       <workItem from="1690966298917" duration="366000" />
       <workItem from="1690966688777" duration="403000" />
       <workItem from="1690967098494" duration="28000" />
-      <workItem from="1690992183790" duration="77000" />
+      <workItem from="1690992183790" duration="121000" />
+      <workItem from="1690993023449" duration="134000" />
+      <workItem from="1690993820872" duration="344000" />
+      <workItem from="1691041329779" duration="2798000" />
+      <workItem from="1691308316436" duration="220000" />
+      <workItem from="1691538879547" duration="3241000" />
     </task>
     <task id="LOCAL-00001" summary=":safety_vest: :: add gif extension check logic">
       <created>1690966206918</created>

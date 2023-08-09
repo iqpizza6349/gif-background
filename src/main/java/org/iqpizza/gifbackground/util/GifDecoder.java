@@ -1,7 +1,6 @@
 package org.iqpizza.gifbackground.util;
 
 import com.intellij.util.ui.ImageUtil;
-import com.intellij.util.ui.UIUtil;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
